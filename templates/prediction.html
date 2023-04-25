@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/prediction.css">
+  </head>
+  <body>
+    <form method="post" action="{{ url_for('predict') }}">
+    <div class="form-group">
+      <label for="input_text">Enter Your Message:</label><br>
+      <textarea id="input_text" name="text_1" rows="10" cols="30"></textarea><br>
+      <button id="submit_button" type="submit">Submit</button>
+    </div>
+    </form>
+    <div class="form-group">
+      <label for="predicted_emotion">Predicted Emotion:</label><br>
+      <label id="predicted_emotion">{{ predicted_emotion }}</label>
+    </div>
+  </body>
+</html>

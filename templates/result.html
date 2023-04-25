@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/results.css">
+    <title>Model Evaluation Metrics</title>
+    <style>
+      table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        text-align: center;
+        padding: 10px;
+      }
+      th {
+        background-color: rgb(207, 241, 13);
+      }
+    </style>
+  </head>
+  <body>    
+    <form method="post" action="{{ url_for('prediction') }}">
+      <button type="submit">prediction</button>
+    </form>
+    <h1>Model Evaluation Metrics</h1>
+    <table>
+      <tr>
+        <th>Model Name</th>
+        <th>Accuracy</th>
+        <th>Precision</th>
+        <th>Recall</th>
+        <th>F1 Score</th>
+      </tr>
+      <tr>
+        <td>SVM</td>
+        <td>83%</td>
+        <td>0.8</td>
+        <td>0.82</td>
+        <td>0.8</td>
+      </tr>
+      <tr>
+        <td>Random Forest</td>
+        <td>80%</td>
+        <td>0.82</td>
+        <td>0.73</td>
+        <td>0.77</td>
+      </tr>
+      <tr>
+        <td>Decision Tree</td>
+        <td>86%</td>
+        <td>0.83</td>
+        <td>0.82</td>
+        <td>0.83</td>
+      </tr>
+      <tr>
+        <td>Naive Bayes</td>
+        <td>72%</td>
+        <td>0.79</td>
+        <td>0.50</td>
+        <td>0.61</td>
+
+      </tr>
+      <tr>
+        <td>Logistic Regression</td>
+        <td>88%</td>
+        <td>0.86</td>
+        <td>0.83</td>
+        <td>0.84</td>
+      </tr>
+      <tr>
+        <td>SVC Linear</td>
+        <td>84%</td>
+        <td>0.81</td>
+        <td>0.77</td>
+        <td>0.78</td>
+
+      </tr>
+      <tr>
+        <td>SVC RBF (Radial Basis Function)</td>
+        <td>81%</td>
+        <td>0.82</td>
+        <td>0.70</td>
+        <td>0.75</td>
+
+      </tr>
+      <tr>
+        <td>Random Forest Bagging</td>
+        <td>81%</td>
+        <td>0.83</td>
+        <td>0.78</td>
+        <td>0.80</td>
+      </tr>
+    </table>
+    <h1>ROC graphs</h1>
+    <button onclick="showImage('svclinear')">SVC LINEAR</button>
+    <button onclick="showImage('logreg')">Logistic Regression</button>
+    <button onclick="showImage('Dt')">Decision Tree</button>
+    <button onclick="showImage('lvsm1')">Linear SVM</button>
+    <button onclick="showImage('nb')">Naive Bayes</button>
+    <button onclick="showImage('Rf')">Random Forest</button>
+    <button onclick="showImage('rfcb')">Bagging</button>
+    <button onclick="showImage('cmlogreg')">Confusion Matrix</button>
+    <button onclick="showImage('svcrbf')">SVC RBF</button>
+    <button onclick="showImage('Accuracy')">Accuracies</button>
+    <br>
+    <img id="Accuracy" src="/static/images/accuracies.png" style="display:none;">
+    <img id="logreg" src="/static/images/ROC_GRAPH_for_logreg.png" style="display:none;">
+    <img id="lvsm1" src="/static/images/ROC_GRAPH_for_lvsm1.png" style="display:none;">
+    <img id="nb" src="/static/images/ROC_GRAPH_for_nb.png" style="display:none;">
+    <img id="Rf" src="/static/images/ROC_GRAPH_for_Rf.png" style="display:none;">
+    <img id="rfcb" src="/static/images/ROC_GRAPH_for_rfcb.png" style="display:none;">
+    <img id="svclinear" src="/static/images/ROC_GRAPH_for_svclinear.png" style="display:none;">
+    <img id="svcrbf" src="/static/images/ROC_GRAPH_for_svcrbf.png" style="display:none;">
+    <img id="cmlogreg" src="/static/images/confusion_matrix_for_logreg.png" style="display:none;">
+    <img id="Dt" src="/static/images/ROC_GRAPH_for_Dt.png" style="display:none;">
+    
+    
+    <script>
+        function showImage(imgId) {
+            // Hide all images
+            var images = document.getElementsByTagName("img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.display = "none";
+            }
+    
+            // Show only the clicked image
+            var img = document.getElementById(imgId);
+            img.style.display = "block";
+        }
+    </script>
+    
+  </body>
+</html>
